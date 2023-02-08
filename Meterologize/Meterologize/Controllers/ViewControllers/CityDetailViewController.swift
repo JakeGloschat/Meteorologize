@@ -28,12 +28,16 @@ class CityDetailViewController: UIViewController {
 		updateViews()
     }
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let city = objectToRecieveTheDataFromOurPrepareForSegue,
+            let newName = cityNameTextField.text,
+              let newTemp = cityTempTextField.text else {return}
+        CityController.sharedInstance.updateCity(cityToUpdate: city, newName: newName, newTemp: Double(newTemp) ?? 0.0)
+        navigationController?.popViewController(animated: true)
     }
     
 	// MARK: - Methods
 	func updateViews() {
-        let city = objectToRecieveTheDataFromOurPrepareForSegue
-        guard let city = objectToRecieveTheDataFromOurPrepareForSegue else {return}
+     guard let city = objectToRecieveTheDataFromOurPrepareForSegue else {return}
 
         cityNameTextField.text = city.name
 		currentStatusLabel.text = city.currentStatus
