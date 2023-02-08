@@ -20,4 +20,9 @@ class CityController {
 		let newCity = City(name: name, currentTemp: temp, dailyHigh: high, dailyLow: low, currentStatus: status)
 		cities.append(newCity)
 	}
+    // If I want to update City object.  I need the new values for the properties, AND I need to know what CITY the user is trying to update
+    func updateCity(cityToUpdate: City, newName: String, newTemp: Double) {
+        cityToUpdate.name = newName
+        cityToUpdate.currentTemp = newTemp
+    }
 }
